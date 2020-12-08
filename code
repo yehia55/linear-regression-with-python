@@ -1,0 +1,25 @@
+import numpy as np
+xl=[]
+yl=[]
+xx=None#having the numbers as a string will help us have the whole input in one line
+yy=None
+xx=input('enter x values ')#having the numbers as a string
+yy=input("enter y values ")
+xl=xx.split()#splitting the string so i can turn them into integers 
+yl=yy.split()
+x=np.array(xl)
+y=np.array(yl)
+x = x.astype(np.float)
+y = y.astype(np.float)
+n=len(y) 
+xy=np.multiply(x,y)
+x2=np.multiply(x,x)
+sx=sum(x)
+sy=sum(y) 
+sxy=xy.sum()
+sx2=x2.sum() 
+coffmatrix=np.array([[n,sx],[sx,sx2]])
+freematrix=np.array([[sy],[sxy]])
+coffmatrixinv= np.linalg.inv(coffmatrix)
+a_b=np.dot(coffmatrixinv,freematrix)
+print("best fit is :","y =",a_b[0],'+',a_b[1],'* x')
